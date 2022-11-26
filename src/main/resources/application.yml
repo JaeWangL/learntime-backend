@@ -3,6 +3,7 @@ server:
 
 app:
   firebase:
+    config-path: firestoretestkey.json
     collection:
       organizers: organizers
       posts: posts
