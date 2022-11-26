@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.0'
     id 'io.spring.dependency-management' version '1.1.0'
+    id 'com.google.cloud.tools.jib' version '3.3.1'
 }
 
 group = 'com.hops'
@@ -16,6 +17,24 @@ configurations {
 
 repositories {
     mavenCentral()
+}
+
+jib {
+    from {
+        image='mcr.microsoft.com/java/jre:17-zulu-alpine'
+    }
+    to {
+        image="geocontainerregistry.azurecr.io/${project.name}"
+        tags=["${project.version.toString().toLowerCase()}"]
+    }
+    container {
+        mainClass='com.hops.learntimebackend.LearntimeBackendApplication'
+        creationTime='USE_CURRENT_TIMESTAMP'
+        environment=[USE_PROFILE: 'docker', PORT: '8080']
+        jvmFlags = ['-Dspring.profiles.active=${USE_PROFILE}', '-Dserver.port=${PORT}', '-Dfile.encoding=UTF-8']
+        ports = ['8080']
+        labels = [maintainer: "JaeWang Lee <jnso5072@outlook.kr>"]
+    }
 }
 
 dependencies {
