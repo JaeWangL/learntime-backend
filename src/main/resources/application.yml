@@ -6,3 +6,23 @@ app:
     collection:
       organizers: organizers
       posts: posts
+
+spring:
+  devtools:
+    restart.enabled: true
+
+springdoc:
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  api-docs:
+    path: /api/docs/json
+  swagger-ui:
+    operations-sorter: alpha
+    tags-sorter: alpha
+    doc-expansion: none
+    path: /api/docs
+    disable-swagger-default-url: true
+    display-request-duration: true
+  show-actuator: true
+  paths-to-match:
+    - /**

@@ -4,12 +4,12 @@ import an.awesome.pipelinr.Command;
 import jakarta.validation.constraints.NotNull;
 
 public record CreateOrganizerCommand(
-        @NotNull(message = "No order number found")
-        String id,
-
-        @NotNull(message = "No order number found")
+        @NotNull(message = "No organizer name found")
         String name,
 
-        @NotNull(message = "No order number found")
+        @NotNull(message = "No organizer description found")
+        String description,
+
+        @NotNull(message = "No organizer profileUrl found")
         String profileUrl) implements Command<String> {
 }

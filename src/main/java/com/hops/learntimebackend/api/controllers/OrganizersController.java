@@ -2,21 +2,31 @@ package com.hops.learntimebackend.api.controllers;
 
 import com.hops.learntimebackend.api.application.commands.CreateOrganizerCommand;
 import com.hops.learntimebackend.api.infrastructure.commandbus.CommandBus;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
 
-@RequestMapping('organizers')
+@Tag(name = "Organizers", description = "organizers api")
+@RequestMapping("organizers")
 @RestController
 @RequiredArgsConstructor
 @Validated
 public class OrganizersController {
     private final CommandBus commandBus;
 
-    @RequestMapping(value = "draft", method = RequestMethod.POST)
-    public ResponseEntity<String> createOrderDraftFromBasketData(
+    @Operation(summary = "create organizer", description = "create new organizer")
+    @GetMapping("")
+    public ResponseEntity<String> createOrganizer() {
+        return ResponseEntity.ok("Test2");
+    }
+
+    @Operation(summary = "create organizer", description = "create new organizer")
+    @PostMapping("")
+    public ResponseEntity<String> createOrganizer(
             @RequestBody @Valid CreateOrganizerCommand command
     ) {
         return ResponseEntity.ok(commandBus.send(command));
