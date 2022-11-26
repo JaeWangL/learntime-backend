@@ -17,24 +17,15 @@ public class CreateOrganizerCommandHandler implements Command.Handler<CreateOrga
 
     @Override
     public String handle(CreateOrganizerCommand command) {
-        final String updatedTimestamp;
-        try {
-            updatedTimestamp = firestoreSvc.saveOrganizer(
-                CreateOrganizerInput.builder()
-                    .id(UlidCreator.getUlid().toString())
-                    .name(command.name())
-                    .description(command.description())
-                    .profileUrl(command.profileUrl())
-                    .createdAt(Instant.now().getEpochSecond())
-                    .updatedAt(Instant.now().getEpochSecond())
-                    .build()
-            );
-
-            return updatedTimestamp;
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return firestoreSvc.saveOrganizer(
+            CreateOrganizerInput.builder()
+                .id(UlidCreator.getUlid().toString())
+                .name(command.name())
+                .description(command.description())
+                .profileUrl(command.profileUrl())
+                .createdAt(Instant.now().getEpochSecond())
+                .updatedAt(Instant.now().getEpochSecond())
+                .build()
+        );
     }
 }

@@ -1,8 +1,6 @@
 package com.hops.learntimebackend.infrastructure.thirdParty.firebase.models;
 
 import com.hops.learntimebackend.infrastructure.thirdParty.firebase.models.embedded.LocationModel;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;

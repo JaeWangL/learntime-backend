@@ -19,12 +19,6 @@ public class OrganizersController {
     private final CommandBus commandBus;
 
     @Operation(summary = "create organizer", description = "create new organizer")
-    @GetMapping("")
-    public ResponseEntity<String> createOrganizer() {
-        return ResponseEntity.ok("Test2");
-    }
-
-    @Operation(summary = "create organizer", description = "create new organizer")
     @PostMapping("")
     public ResponseEntity<String> createOrganizer(
             @RequestBody @Valid CreateOrganizerCommand command
