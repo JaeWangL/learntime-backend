@@ -1,19 +1,23 @@
 package com.hops.learntimebackend.infrastructure.thirdParty.firebase.models;
 
 import com.hops.learntimebackend.infrastructure.thirdParty.firebase.models.embedded.LocationModel;
-
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.Builder;
+import lombok.Getter;
 
-public record CreatePostInput(
-        String id,
-        String title,
-        String description,
-        Integer likes,
-        Integer bookmarks,
-        List<String> photoUrls,
-        LocationModel location,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt,
-        CreateOrganizerInput organizer) {
+@Builder
+@Getter
+public class CreatePostInput {
+    private final String id;
+    private final String title;
+    private final String description;
+    private final Integer likes;
+    private final Integer bookmarks;
+    private final List<String> photoUrls;
+    private final LocationModel location;
+    private final Long createdAt;
+    private final Long updatedAt;
+    private final CreateOrganizerInput organizer;
 }

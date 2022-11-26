@@ -1,11 +1,16 @@
 package com.hops.learntimebackend.infrastructure.thirdParty.firebase.models.embedded;
 
-public record LocationModel(
-        String address1DepthName,
-        String address2DepthName,
-        String address3DepthName,
-        String address4DepthDetail,
-        String addressName,
-        Double latitude,
-        Double longitude
-) {}
+import lombok.Builder;
+import lombok.Getter;
+
+@Builder
+@Getter
+public class LocationModel {
+    private final String address1DepthName;
+    private final String address2DepthName;
+    private final String address3DepthName;
+    private final String address4DepthDetail;
+    private final String addressName;
+    private final Double latitude;
+    private final Double longitude;
+}

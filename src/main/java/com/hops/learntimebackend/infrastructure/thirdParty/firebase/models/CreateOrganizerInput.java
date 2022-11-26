@@ -1,12 +1,15 @@
 package com.hops.learntimebackend.infrastructure.thirdParty.firebase.models;
 
-import java.time.LocalDateTime;
+import lombok.Builder;
+import lombok.Getter;
 
-public record CreateOrganizerInput(
-        String id,
-        String name,
-        String profileUrl,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt)
-{
+@Builder
+@Getter
+public class CreateOrganizerInput {
+    private final String id;
+    private final String description;
+    private final String name;
+    private final String profileUrl;
+    private final Long createdAt;
+    private final Long updatedAt;
 }

@@ -23,7 +23,7 @@ public class FirestoreServiceImpl implements FirestoreService {
     public String saveOrganizer(CreateOrganizerInput request) throws ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> future = db.collection(collectionOrganizers)
-                .document(request.id())
+                .document(request.getId())
                 .set(request);
 
         return future.get().getUpdateTime().toString();
@@ -33,7 +33,7 @@ public class FirestoreServiceImpl implements FirestoreService {
     public String savePost(CreatePostInput request) throws ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> future = db.collection(collectionPosts)
-                .document(request.id())
+                .document(request.getId())
                 .set(request);
 
         return future.get().getUpdateTime().toString();
