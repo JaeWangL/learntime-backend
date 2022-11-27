@@ -22,7 +22,7 @@ public class FirebaseConfig {
             FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(getFirebaseConfig()))
                 .build();
-            FirebaseApp.initializeApp(options, "Learntime");
+            FirebaseApp.initializeApp(options);
         } catch (Exception e){
             e.printStackTrace();
         }
